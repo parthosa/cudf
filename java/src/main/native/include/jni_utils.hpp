@@ -28,6 +28,8 @@ namespace cudf {
 namespace jni {
 
 constexpr jint MINIMUM_JNI_VERSION = JNI_VERSION_1_6;
+constexpr int REQ_COMPUTE_CAPABILITY_MAJOR = 7;
+constexpr int REQ_COMPUTE_CAPABILITY_MINOR = 0;
 
 constexpr char const *CUDA_ERROR_CLASS = "ai/rapids/cudf/CudaException";
 constexpr char const *CUDA_FATAL_ERROR_CLASS = "ai/rapids/cudf/CudaFatalException";
@@ -940,3 +942,4 @@ inline nullptr_t del_global_ref(JNIEnv *env, jobject jobj) {
   }
 
 #define CATCH_STD(env, ret_val) CATCH_STD_CLASS(env, cudf::jni::CUDF_ERROR_CLASS, ret_val)
+#define COMPUTE_CAPABILITY_STR(major_ver, minor_ver) std::to_string(major_ver) + "." + std::to_string(minor_ver)
